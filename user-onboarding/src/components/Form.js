@@ -15,19 +15,17 @@ export default function Form(props) {
         update(name, useValue);
     }
 
-    
-   
     return(
-        <form>
+        <form onSubmit={onSubmit}>
         
-        <div className='form container'>
+        <div className='form-container'>
             <div className='text-inputs'>
                 <label>First Name:
                     <input
                         name='first_name'
                         type='text'
-                        placeholder="Enter first name"
-                        maxLength='30'
+                        placeholder="first name"
+                        minLength='3'
                         value={values.first_name}
                         onChange={change}
                     />
@@ -37,7 +35,7 @@ export default function Form(props) {
                     <input
                         name='last_name'
                         type='text'
-                        placeholder="Enter last name"
+                        placeholder="last name"
                         maxLength='30'
                         value={values.last_name}
                         onChange={change}
@@ -48,7 +46,7 @@ export default function Form(props) {
                     <input
                         name='email'
                         type='email'
-                        placeholder='Enter email'
+                        placeholder='Email'
                         value={values.email}
                         onChange={change}
                     />  
@@ -58,7 +56,8 @@ export default function Form(props) {
                     <input
                         type='password'
                         name='password'
-                        // value=''
+                        placeholder="Password"
+                        value={values.password}
                         onChange={change}
                     />  
                 </label> 
@@ -77,7 +76,7 @@ export default function Form(props) {
 
             <div className='errors'>
                 <div>{errors.first_name}</div>
-                <div>{errors.first_name}</div>
+                <div>{errors.last_name}</div>
                 <div>{errors.email}</div>
                 <div>{errors.password}</div>
                 <div>{errors.tos}</div>

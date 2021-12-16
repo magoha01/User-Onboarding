@@ -5,8 +5,9 @@ const formSchema = yup.object().shape({
     first_name: yup
         .string()
         .trim()
-        .required('Please enter your first name'),
-
+        .required('Please enter your first name')
+        .min(3),
+        
     last_name: yup
         .string()
         .trim()
@@ -20,7 +21,7 @@ const formSchema = yup.object().shape({
     password: yup
         .string()
         .required('Please enter your password')
-        .min(6, 'password must be at least six characters.'),
+        .min(6, 'password must be at least six characters long.'),
 
     tos: yup.boolean()
 
