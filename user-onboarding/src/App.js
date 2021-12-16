@@ -22,6 +22,7 @@ const initialFormErrors = {
   last_name: '',
   email: '',
   password: '',
+  tos: '',
 }
 
 const initialUsers= [];
@@ -30,19 +31,17 @@ const disableSubmit= true;
 //*****FUNCTION START*****//
 
 function App()  {
-
 //SET STATE//
   const [users, setUsers] = useState(initialUsers);
   const [formValues, setFormValues] = useState(initialFormValues);
   const [disabled, setDisabled] = useState(disableSubmit);
   const [errors, setErrors] = useState(initialFormErrors);
 
-
 const postUser = (newUser) => {
   axios.post('https://reqres.in/api/users', newUser)
   .then(resp =>{
     setUsers([ ...users, resp.data]);
-
+    console.log(resp.data)
   })
   .catch(err => 
     console.error(err)
@@ -52,7 +51,7 @@ const postUser = (newUser) => {
   })
 }
 
-console.log(postUser)
+
 
 //VALIDATE FUNCTION HERE
 
@@ -64,7 +63,7 @@ const validate = (name, value) => {
 }
 
   const updateForm = (inputName, inputValue) => {
-    validate(inputName, inputValue)
+    validate(inputName, inputValue);
     setFormValues({ ...formValues, [inputName]: inputValue });
   }
 
@@ -77,11 +76,6 @@ const validate = (name, value) => {
     }
     postUser(newUser)
   }
-
-  // //Side Effects//
-  // useEffect(()=>{
-  //   getUsers()
-  // },[])
 
   useEffect(() => {
     schema.isValid(formValues).then(valid => setDisabled(!valid))
@@ -101,12 +95,11 @@ const validate = (name, value) => {
         errors={errors}
       />
 
-      {
-        users.map(user => {
-            return <User key={user.id} details={user} />
-        })
-     } 
-
+   { 
+    users.map((user) =>{
+          return <User key={user.id} details={user} />
+    })
+  }
     </div>
   );
 }

@@ -10,15 +10,15 @@ export default function Form(props) {
         }
 
     const change = event => {
-        const { value, checked, type, name } = event.target;
-        const useValue = type === 'checkbox' ? checked : value;
+        const { value, tos, type, name } = event.target;
+        const useValue = type === 'checkbox' ? tos : value;
         update(name, useValue);
     }
 
     return(
+    <div className='form-container'>
         <form onSubmit={onSubmit}>
-        
-        <div className='form-container'>
+       
             <div className='text-inputs'>
                 <label>First Name:
                     <input
@@ -64,7 +64,7 @@ export default function Form(props) {
             </div>
 
             <div className = 'checkbox-inputs'>
-                <label> Terms of Service
+                <label> Terms of Service:
                     <input
                         type='checkbox'
                         name='tos'
@@ -83,10 +83,11 @@ export default function Form(props) {
             </div>
 
             <div className='submit-button'>
-            <button disabled={disabled}>Submit</button>
+            <button disabled={disabled} value=''>Submit</button>
             </div>
 
-           </div> 
+           
         </form>
+    </div> 
     )
 }
