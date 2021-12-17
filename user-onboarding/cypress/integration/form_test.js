@@ -22,5 +22,18 @@ describe('Quotes App', () => {
       const emailInput = () => cy.get('input[name=email]');
       const passwordInput = () => cy.get('input[name=password]');
       const submitBtn = () => cy.get('button[id="submitBtn"]');
+      const checkbox = () => cy.get('input[name=tos]')
+
+      it('Form elements are showing', () => {
+        fNameInput().should('exist');
+        lNameInput().should('exist');
+        emailInput().should('exist');
+        passwordInput().should('exist');
+        submitBtn().should('exist');
+        checkbox().should('exist')
+        
+        // cy.contains('Submit Quote').should('exist');
+        // cy.contains(/submit quote/i).should('exist');
+      })
 
 })
