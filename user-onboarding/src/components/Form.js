@@ -2,12 +2,50 @@ import React from 'react'
 import styled from 'styled-components'
 
 const FormContainer = styled.div`
+    margin: 2%;
 
-    form{
+    div{
+        /* border: 1px solid white; */
         display: flex;
-        flex-flow: column wrap;
+        align-content: center;
+        justify-content: center;
     }
+    
+    form{
+        background-color: teal;
+        padding: 5%;
+        border-radius: 1.6rem;
+        /* border: 1px solid white; */
+    }
+
+    input{
+        display: flex;
+        flex-direction: row;
+    }
+
+    label{
+        margin: 2%;
+        font-weight: bold;
+        color: white;
+        text-align: center;
+    }
+   
+   & .errors {
+       color: orange;
+       font-size: 1.2rem;
+       
+   }
 `
+const Submit = styled.button`
+padding: 1% 2%;
+color: black;
+border: 1px solid white;
+font-weight: bold;
+background-color: white;
+
+`
+
+
 
 export default function Form(props) {
 
@@ -33,7 +71,7 @@ export default function Form(props) {
                     <input
                         name='first_name'
                         type='text'
-                        placeholder="first name"
+                        placeholder="First Name"
                         minLength='3'
                         value={values.first_name}
                         onChange={change}
@@ -44,7 +82,7 @@ export default function Form(props) {
                     <input
                         name='last_name'
                         type='text'
-                        placeholder="last name"
+                        placeholder="Last Name"
                         maxLength='30'
                         value={values.last_name}
                         onChange={change}
@@ -73,14 +111,14 @@ export default function Form(props) {
             </div>
 
             <div className = 'checkbox-inputs'>
-                <label> Terms of Service:
+               <label> Terms of Service: 
                     <input
                         type='checkbox'
                         name='tos'
                         checked={values.tos}
                         onChange={change}
                     />
-                </label>
+                </label>   
             </div>
 
             <div className='errors'>
@@ -92,7 +130,7 @@ export default function Form(props) {
             </div>
 
             <div className='submit-button'>
-            <button disabled={disabled} id='submitBtn'>Submit</button>
+            <Submit disabled={disabled} id='submitBtn'>Submit</Submit>
             </div>
 
            

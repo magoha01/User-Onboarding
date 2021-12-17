@@ -2,9 +2,15 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import schema from './validation/formSchema';
 import * as yup from 'yup';
+import styled from 'styled-components'
 //Components
 import User from './components/User'
 import Form from './components/Form'
+
+const Header = styled.h1`
+  text-align: center;
+  font-size: 4rem;
+`
 
 const initialFormValues = {
   //text
@@ -84,7 +90,7 @@ const validate = (name, value) => {
 
   return (
     <div className="App">
-     <h1> User Onboarding</h1>
+     <Header> Welcome, New User! </Header>
 
       <Form
         values={formValues}
