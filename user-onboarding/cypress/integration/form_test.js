@@ -31,9 +31,33 @@ describe('Quotes App', () => {
         passwordInput().should('exist');
         submitBtn().should('exist');
         checkbox().should('exist')
-        
-        // cy.contains('Submit Quote').should('exist');
-        // cy.contains(/submit quote/i).should('exist');
       })
+
+      it('submit button starts out disabled', () => {
+        submitBtn().should('be.disabled');
+      })
+
+      it('Can type in names, email, and password', () => {
+        fNameInput()
+          .should('have.value', '')
+          .type('firstName')
+          .should('have.value', 'firstName')
+        
+          lNameInput()
+          .should('have.value', '')
+          .type('lastName')
+          .should('have.value', 'lastName')
+  
+        emailInput()
+          .should('have.value', '')
+          .type('email@email.com')
+          .should('have.value', 'email@email.com')
+
+          passwordInput()
+          .should('have.value', '')
+          .type('password')
+          .should('have.value', 'password')
+      })
+
 
 })
