@@ -6,7 +6,6 @@ import * as yup from 'yup';
 import User from './components/User'
 import Form from './components/Form'
 
-
 const initialFormValues = {
   //text
   first_name: '',

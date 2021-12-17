@@ -1,4 +1,13 @@
 import React from 'react'
+import styled from 'styled-components'
+
+const FormContainer = styled.div`
+
+    form{
+        display: flex;
+        flex-flow: column wrap;
+    }
+`
 
 export default function Form(props) {
 
@@ -16,7 +25,7 @@ export default function Form(props) {
     }
 
     return(
-    <div className='form-container'>
+    <FormContainer className='form-container'>
         <form onSubmit={onSubmit}>
        
             <div className='text-inputs'>
@@ -88,6 +97,6 @@ export default function Form(props) {
 
            
         </form>
-    </div> 
+    </FormContainer> 
     )
 }

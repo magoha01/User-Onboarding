@@ -17,5 +17,10 @@ describe('Quotes App', () => {
         expect({}).not.to.equal({});   
       })
 
+      const fNameInput = () => cy.get('input[name=first_name]');
+      const lNameInput = () => cy.get('input[name=last_name]');
+      const emailInput = () => cy.get('input[name=email]');
+      const passwordInput = () => cy.get('input[name=password]');
+      const submitBtn = () => cy.get('button[id="submitBtn"]');
 
 })
