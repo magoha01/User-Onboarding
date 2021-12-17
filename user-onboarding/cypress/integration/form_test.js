@@ -23,6 +23,7 @@ describe('Quotes App', () => {
       const passwordInput = () => cy.get('input[name=password]');
       const submitBtn = () => cy.get('button[id="submitBtn"]');
       const checkbox = () => cy.get('input[name=tos]')
+      const fullName = () => cy.get()
 
       it('Form elements are showing', () => {
         fNameInput().should('exist');
@@ -59,5 +60,54 @@ describe('Quotes App', () => {
           .should('have.value', 'password')
       })
 
+      it('terms of service checkbox can be checked', () => {
+        checkbox().check()
+      })
 
+      it('If all fields are filled out, user can submit form', () =>{
+        fNameInput()
+        .type('firstName')
+
+        lNameInput()
+        .type('lastName')
+       
+
+        emailInput()
+        .type('email@email.com')
+      
+
+        passwordInput()
+        .type('password')
+
+        checkbox().check()
+        
+        submitBtn().click()
+
+       cy.get('h2').should('exist').contains('firstName lastName');
+       
+      })
+
+      it('user cannot submit form if field is left empty', () => {
+
+        fNameInput().type('firstName')
+          submitBtn().should('be.disabled')
+
+        
+          lNameInput()
+          .type('lastName')
+          submitBtn().should('be.disabled')
+  
+        emailInput()
+          .type('email@email.com')
+          submitBtn().should('be.disabled')
+
+          passwordInput()
+          .type('password')
+          submitBtn().should('be.disabled')
+
+          checkbox().check()
+
+          submitBtn().should('not.be.disabled')
+
+      })
 })
